@@ -1,0 +1,9 @@
+<import src="../../public/wxParse/wxParse.wxml" />
+<view class="wq-container">
+  <view class="wq-wrapper">
+    <view class="wq-agree-title">{{title}}</view>
+    <view class="wq-agree-content">
+      <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+    </view>
+  </view>
+</view>

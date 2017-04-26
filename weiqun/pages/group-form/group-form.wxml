@@ -1,0 +1,83 @@
+<view class="wq-container">
+  <view class="wq-wrapper" style="padding-bottom:150rpx;">
+    <checkbox-group class="wq-form-agreement" bindchange="setFormAgree">
+      <label class="wq-form-agreement-wrapper" for="agreement">
+        <checkbox class="wq-form-agreement-checkbox" id="agreement" value="true" checked="{{form.agree}}"></checkbox>
+        <text>我已阅读并同意</text>
+        <navigator class="wq-form-agreement-link" url="../group-agree/group-agree">微群搜索运营规范</navigator>
+      </label>
+    </checkbox-group>
+    <view class="wq-form-input-cell">
+      <input class="wq-form-input-box" style="color:#000000;" placeholder-style="color:#000000;" placeholder="请输入群名称" value="{{form.name}}" bindinput="setFormName"></input>
+    </view>
+    <view class="wq-form-input-cell">
+      <view class="wq-form-input-cell-label">所在城市</view>
+      <picker class="wq-form-input-cell-picker" bindchange="setFormCity" range="{{cities}}" range-key="name" wx:if="{{form.province}}">
+        <text class="wq-form-input-cell-picker-text">{{form.city || "请选择城市"}}</text>
+      </picker>
+      <picker class="wq-form-input-cell-picker" bindchange="setFormProvince" range="{{provinces}}" range-key="name">
+        <text class="wq-form-input-cell-picker-text">{{form.province || "请选择省份、城市"}}</text>
+      </picker>
+    </view>
+    <view class="wq-form-input-cell">
+      <view class="wq-form-input-cell-label">所属分类</view>
+      <picker class="wq-form-input-cell-picker" bindchange="setFormClass2" range="{{class2s}}" range-key="name" wx:if="{{form.class1}}">
+        <text class="wq-form-input-cell-picker-text">{{form.class2 || "请选择二级分类"}}</text>
+      </picker>
+      <picker class="wq-form-input-cell-picker" bindchange="setFormClass1" range="{{class1s}}" range-key="name">
+        <text class="wq-form-input-cell-picker-text">{{form.class1 || "请选择分类"}}</text>
+      </picker>
+    </view>
+    <view class="wq-form-input-cell">
+      <textarea class="wq-form-input-area" placeholder="简单描述一下群（留下微信号，方便加群）" value="{{form.desc}}" bindinput="setFormDesc" disabled="{{prompt.enabled}}" hidden="{{prompt.enabled}}"></textarea>
+      <view class="wq-form-input-area" hidden="{{!prompt.enabled}}"></view>
+      <view class="wq-form-input-area-count">
+        <text>{{form.desccount}}</text>
+      </view>
+    </view>
+    <view class="wq-form-input-cell">
+      <view class="wq-form-input-cell-title">
+        <text>群标签</text>
+        <text class="wq-form-input-cell-title-small">（最多可选择三个）</text>
+      </view>
+      <view class="wq-form-input-cell-tag-wrapper">
+        <block wx:for="{{publiclabels}}" wx:key="name">
+          <text class="wq-form-input-cell-tag {{item.checked ? 'active' : ''}}" data-name="{{item.name}}" catchtap="checkLabel">{{item.name}}</text>
+        </block>
+        <block wx:for="{{privatelabels}}" wx:key="name">
+          <text class="wq-form-input-cell-tag {{item.checked ? 'active' : ''}}" data-name="{{item.name}}" catchtap="checkLabel">{{item.name}}</text>
+        </block>
+        <text class="wq-form-input-cell-tag" wx:if="{{!editlabel.enabled}}" catchtap="enableEditLabel">自定义标签</text>
+        <input class="wq-form-input-cell-tag" style="width:160rpx;height:48rpx;line-height:48rpx;min-height:0;" wx:if="{{editlabel.enabled}}" focus="{{editlabel.focused}}" value="{{editlabel.value}}" maxlength="18" bindblur="disableEditLabel" bindconfirm="addPrivateLabel"></input>
+      </view>
+    </view>
+    <view class="wq-form-input-cell">
+      <view class="wq-form-input-cell-label">群主二维码</view>
+      <view class="wq-form-input-cell-text">（请上传群主微信个人二维码）</view>
+      <image class="wq-form-input-cell-image" src="{{form.peopleqrcode || '../../images/icon-add.png'}}" bindtap="uploadPeopleQrcode"></image>
+    </view>
+    <view class="wq-form-input-cell">
+      <view class="wq-form-input-cell-label">加群需备注</view>
+      <input class="wq-form-input-cell-text" style="padding-left:10rpx;width:500rpx;font-size:30rpx;" placeholder-style="color:#9e9e9e;font-size:26rpx;" placeholder="加群需填写的备注信息，不超过8个字" maxlength="8" value="{{form.remark}}" bindinput="setFormRemark"></input>
+    </view>
+    <view class="wq-form-input-cell">
+      <view class="wq-form-input-cell-label">群的二维码</view>
+      <view class="wq-form-input-cell-text">（选填）</view>
+      <image class="wq-form-input-cell-image" src="{{form.qrcode || '../../images/icon-add.png'}}" bindtap="uploadQrcode"></image>
+    </view>
+  </view>
+  <!--发布按钮-->
+  <view class="wq-block-button-wrapper">
+    <view class="wq-block-button" catchtap="gotoGroup">发布</view>
+  </view>
+  <!--发布按钮-->
+</view>
+<!--弹出层-->
+<view class="wq-mask" hidden="{{!prompt.enabled}}" bindtap="hidePrompt"></view>
+<view class="wq-prompt" hidden="{{!prompt.enabled}}">
+  <image class="wq-prompt-image" src="{{prompt.image}}"></image>
+  <view class="wq-prompt-title">
+    <text>{{prompt.caption}}</text>
+  </view>
+</view>
+<!--弹出层-->

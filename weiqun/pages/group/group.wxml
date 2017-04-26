@@ -1,0 +1,51 @@
+<view class="wq-container">
+  <view class="wq-wrapper">
+    <!--用户身份-->
+    <view class="wq-profile">
+      <image class="wq-profile-bg" src="../../images/image-profile-bg.jpeg"></image>
+      <image class="wq-profile-avatar" src="{{user.avatar}}"></image>
+      <view class="wq-profile-name">
+        <text>{{user.name}}</text>
+      </view>
+    </view>
+    <!--用户身份-->
+    <!--发布按钮-->
+    <view class="wq-block-button" catchtap="gotoForm">发布群</view>
+    <!--发布按钮-->
+    <!--列表面板-->
+    <view style="padding:0 20rpx 20rpx;">
+      <view class="wq-list-card" wx:for="{{list.items}}" wx:key="code" data-code="{{item.code}}" bindtap="gotoDetail">
+        <view class="wq-list-card-line">
+          <image class="wq-list-card-icon" src="{{item.icon}}"></image>
+          <view class="wq-list-card-text-1">
+            <view class="wq-list-card-text-1-1">
+              <view class="wq-list-card-text-1-1-1">{{item.person}}</view>
+              <view class="wq-list-card-text-1-1-2">{{item.date}}</view>
+            </view>
+            <view class="wq-list-card-text-1-2">{{item.name}}</view>
+          </view>
+        </view>
+        <view class="wq-list-card-line">
+          <view class="wq-list-card-text-2">
+            <view class="wq-list-card-text-2-1">{{item.category1}}</view>
+            <view class="wq-list-card-text-2-2">{{item.category2}}</view>
+            <image class="wq-list-card-qrcode" src="../../images/icon-qrcode.png" data-image="{{item.qrcode}}" data-caption="{{item.caption}}" catchtap="showPrompt"></image>
+          </view>
+        </view>
+      </view>
+      <!--加载更多-->
+      <view class="wq-loadmore" hidden="{{!list.hasnone}}">没有找到内容</view>
+      <!--加载更多-->
+    </view>
+    <!--列表面板-->
+  </view>
+</view>
+<!--弹出层-->
+<view class="wq-mask" hidden="{{!prompt.enabled}}" bindtap="hidePrompt"></view>
+<view class="wq-prompt" hidden="{{!prompt.enabled}}">
+  <image class="wq-prompt-image" src="{{prompt.image}}"></image>
+  <view class="wq-prompt-title">
+    <text>{{prompt.caption}}</text>
+  </view>
+</view>
+<!--弹出层-->

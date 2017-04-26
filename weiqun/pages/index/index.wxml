@@ -1,0 +1,94 @@
+<view class="wq-container">
+  <!--搜索框-->
+  <view class="wq-search-bar" style="flex:none;margin:10rpx 0;" hidden="{{!search.enabled}}">
+    <image class="wq-search-bar-icon" src="../../images/icon-search.png"></image>
+    <input class="wq-search-bar-input" placeholder="{{search.placeholder}}" value="{{search.value}}" focus="{{search.focused}}" bindfocus="focusSearch" bindconfirm="search"></input>
+    <view class="wq-search-bar-cancel" bindtap="cancelSearch" hidden="{{!search.focused}}">取消</view>
+  </view>
+  <!--搜索框-->
+  <view class="wq-wrapper">
+    <!--轮播图-->
+    <swiper class="wq-swiper" style="margin-bottom:20rpx;" indicator-dots="{{swiper.indicator}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" hidden="{{search.focused}}">
+      <swiper-item wx:for="{{swiper.images}}" wx:key="img">
+        <image class="wq-swiper-image" src="{{item.img}}" data-url="{{item.url}}" data-able="{{item.able}}" catchtap="gotoImg"></image>
+      </swiper-item>
+    </swiper>
+    <!--轮播图-->
+    <!--菜单面板-->
+    <scroll-view class="wq-menu-grid" style="margin-bottom:20rpx;" scroll-x="true" hidden="{{search.focused}}">
+      <view class="wq-menu-grid-view" wx:for="{{menu.items}}" wx:for-item="view" wx:key="*this">
+        <view class="wq-menu-grid-panel">
+          <view class="wq-menu-grid-item" wx:for="{{view}}" wx:for-item="item" wx:key="code" data-code="{{item.code}}" data-name="{{item.name}}" bindtap="gotoMenu">
+            <image class="wq-menu-grid-item-icon" src="{{item.icon}}"></image>
+            <view class="wq-menu-grid-item-title">{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <!--菜单面板-->
+    <!--热门列表面板-->
+    <view style="padding:0 20rpx 20rpx;" hidden="{{search.focused}}">
+      <view class="wq-title" style="font-size:32rpx;">热门</view>
+      <view class="wq-list-card" wx:for="{{hots.items}}" wx:key="code" data-code="{{item.code}}" bindtap="gotoDetail">
+        <view class="wq-list-card-line">
+          <image class="wq-list-card-icon" src="{{item.icon}}"></image>
+          <view class="wq-list-card-text-1">
+            <view class="wq-list-card-text-1-1">
+              <view class="wq-list-card-text-1-1-1">{{item.person}}</view>
+              <view class="wq-list-card-text-1-1-2">{{item.date}}</view>
+            </view>
+            <view class="wq-list-card-text-1-2">{{item.name}}</view>
+          </view>
+        </view>
+        <view class="wq-list-card-line">
+          <view class="wq-list-card-text-2">
+            <view class="wq-list-card-text-2-1">{{item.category1}}</view>
+            <view class="wq-list-card-text-2-2">{{item.category2}}</view>
+            <image class="wq-list-card-qrcode" src="../../images/icon-qrcode.png" data-image="{{item.qrcode}}" data-caption="{{item.caption}}" catchtap="showPrompt"></image>
+          </view>
+        </view>
+      </view>
+      <!--加载更多-->
+      <view class="wq-loadmore" hidden="{{!hots.hasnone}}">没有找到内容</view>
+      <!--加载更多-->
+    </view>
+    <!--热门列表面板-->
+    <!--搜索结果面板-->
+    <view style="padding:0 20rpx 20rpx;" hidden="{{!search.focused}}">
+      <view class="wq-list-card" wx:for="{{list.items}}" wx:key="code" data-code="{{item.code}}" bindtap="gotoDetail">
+        <view class="wq-list-card-line">
+          <image class="wq-list-card-icon" src="{{item.icon}}"></image>
+          <view class="wq-list-card-text-1">
+            <view class="wq-list-card-text-1-1">
+              <view class="wq-list-card-text-1-1-1">{{item.person}}</view>
+              <view class="wq-list-card-text-1-1-2">{{item.date}}</view>
+            </view>
+            <view class="wq-list-card-text-1-2">{{item.name}}</view>
+          </view>
+        </view>
+        <view class="wq-list-card-line">
+          <view class="wq-list-card-text-2">
+            <view class="wq-list-card-text-2-1">{{item.category1}}</view>
+            <view class="wq-list-card-text-2-2">{{item.category2}}</view>
+            <image class="wq-list-card-qrcode" src="../../images/icon-qrcode.png" data-image="{{item.qrcode}}" data-caption="{{item.caption}}" catchtap="showPrompt"></image>
+          </view>
+        </view>
+      </view>
+      <!--加载更多-->
+      <view class="wq-loadmore" hidden="{{!list.loading}}">正在加载中...</view>
+      <view class="wq-loadmore" hidden="{{list.hasmore}}">没有更多了</view>
+      <view class="wq-loadmore" hidden="{{!list.hasnone}}">没有找到内容</view>
+      <!--加载更多-->
+    </view>
+    <!--搜索结果面板-->
+  </view>
+</view>
+<!--弹出层-->
+<view class="wq-mask" hidden="{{!prompt.enabled}}" bindtap="hidePrompt"></view>
+<view class="wq-prompt" hidden="{{!prompt.enabled}}">
+  <image class="wq-prompt-image" src="{{prompt.image}}"></image>
+  <view class="wq-prompt-title">
+    <text>{{prompt.caption}}</text>
+  </view>
+</view>
+<!--弹出层-->

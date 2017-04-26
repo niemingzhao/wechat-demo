@@ -1,0 +1,48 @@
+<view class="wq-container">
+  <view class="wq-wrapper">
+    <!--详情头-->
+    <view class="wq-detail-head">
+      <image class="wq-detail-head-image" src="{{detail.image}}"></image>
+      <view class="wq-detail-head-content">
+        <view class="wq-detail-head-content-line">
+          <view class="wq-detail-head-content-1-1">{{detail.person}}</view>
+          <view class="wq-detail-head-content-1-2">{{detail.category1}}</view>
+        </view>
+        <view class="wq-detail-head-content-line">
+          <view class="wq-detail-head-content-2-1">{{detail.name}}</view>
+        </view>
+        <view class="wq-detail-head-content-line">
+          <view class="wq-detail-head-content-3-1">ID:{{detail.id}}</view>
+          <view class="wq-detail-head-content-3-2" hidden="{{!detail.qrcode}}" data-image="{{detail.qrcode}}" data-caption="{{detail.caption}}" catchtap="showPrompt">加 我</view>
+        </view>
+      </view>
+    </view>
+    <!--详情头-->
+    <!--详情体-->
+    <view class="wq-detail-body">
+      <view class="wq-detail-body-title">群简介</view>
+      <view class="wq-detail-body-content">
+        <text>{{detail.description}}</text>
+      </view>
+      <view class="wq-detail-body-tag">
+        <image class="wq-detail-body-tag-icon" src="../../images/icon-bookmark.png"></image>
+        <view class="wq-detail-body-tag-text">{{detail.category2}}</view>
+      </view>
+      <view class="wq-detail-body-title">群二维码</view>
+      <image class="wq-detail-body-qrcode-image" src="{{detail.mainqrcode}}" data-url="{{detail.mainqrcode}}" bindtap="previewPic" binderror="errorPic" data-error-target="detail.mainqrcode" bindtouchstart="touchstartPic" bindtouchend="touchendPic" bindlongtap="downloadPic"></image>
+      <view class="wq-detail-body-qrcode-caption">
+        <text>{{detail.maincaption}}</text>
+      </view>
+    </view>
+    <!--详情体-->
+  </view>
+</view>
+<!--弹出层-->
+<view class="wq-mask" hidden="{{!prompt.enabled}}" bindtap="hidePrompt"></view>
+<view class="wq-prompt" hidden="{{!prompt.enabled}}">
+  <image class="wq-prompt-image" src="{{prompt.image}}" data-url="{{prompt.image}}" bindtap="previewPic" binderror="errorPic" data-error-target="prompt.image" bindtouchstart="touchstartPic" bindtouchend="touchendPic" bindlongtap="downloadPic"></image>
+  <view class="wq-prompt-title">
+    <text>{{prompt.caption}}</text>
+  </view>
+</view>
+<!--弹出层-->

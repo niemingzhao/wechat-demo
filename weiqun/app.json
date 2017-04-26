@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/group/group",
+    "pages/index-content/index-content",
+    "pages/index-detail/index-detail",
+    "pages/group-form/group-form",
+    "pages/group-agree/group-agree"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "微群",
+    "backgroundColor": "#f0eff5",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#9e9e9e",
+    "selectedColor": "#3fb57a",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon-index-unselected.png",
+        "selectedIconPath": "images/icon-index-selected.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/group/group",
+        "iconPath": "images/icon-group-unselected.png",
+        "selectedIconPath": "images/icon-group-selected.png",
+        "text": "发布群"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

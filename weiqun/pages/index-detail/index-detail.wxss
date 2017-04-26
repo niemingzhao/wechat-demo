@@ -1,0 +1,146 @@
+.wq-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/*详情头*/
+
+.wq-detail-head {
+  flex: none;
+  display: flex;
+  margin: 10rpx 0 20rpx;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.wq-detail-head-image {
+  flex: 2.1;
+  height: 150rpx;
+}
+
+.wq-detail-head-content {
+  flex: 7.9;
+  height: 150rpx;
+}
+
+.wq-detail-head-content-line {
+  padding-left: 20rpx;
+  overflow: hidden;
+}
+
+.wq-detail-head-content-1-1 {
+  float: left;
+  font-size: 28rpx;
+  color: #9e9e9e;
+  max-width: 300rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.wq-detail-head-content-1-2 {
+  float: right;
+  font-size: 28rpx;
+  color: #9e9e9e;
+  max-width: 200rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.wq-detail-head-content-2-1 {
+  font-size: 32rpx;
+  line-height: 2;
+  color: #000;
+  max-width: 500rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.wq-detail-head-content-3-1 {
+  float: left;
+  font-size: 28rpx;
+  color: #9e9e9e;
+  max-width: 300rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.wq-detail-head-content-3-2 {
+  float: right;
+  padding: 0 30rpx;
+  border: 1rpx solid #3fb57a;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 1.3;
+  color: #3fb57a;
+  max-width: 200rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/*详情体*/
+
+.wq-detail-body {
+  flex: auto;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.wq-detail-body-title {
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  color: #9e9e9e;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.wq-detail-body-content {
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+}
+
+.wq-detail-body-qrcode-image {
+  display: block;
+  width: 300rpx;
+  height: 300rpx;
+  margin: 20rpx auto;
+}
+
+.wq-detail-body-qrcode-caption {
+  font-size: 28rpx;
+  color: #9e9e9e;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.wq-detail-body-tag {
+  height: 60rpx;
+  margin: 20rpx 0;
+  border-bottom: 1rpx solid #bbb;
+}
+
+.wq-detail-body-tag-icon {
+  width: 30rpx;
+  height: 30rpx;
+  padding: 15rpx 20rpx 15rpx 0;
+  vertical-align: middle;
+}
+
+.wq-detail-body-tag-text {
+  display: inline-block;
+  font-size: 30rpx;
+  line-height: 2;
+  color: #9e9e9e;
+  max-width: 650rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: middle;
+}
